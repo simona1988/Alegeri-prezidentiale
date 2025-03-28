@@ -1,31 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="/styles.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Register</h2>
-        <form action="/register" method="POST">
-            <div>
-                <label>Name:</label>
-                <input type="text" name="name" required>
-            </div>
-            <div>
-                <label>Email:</label>
-                <input type="email" name="email" required>
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" name="password" required>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="/login">Login</a></p>
-    </div>    
-    <script src="/script.js"></script> 
+  <div class="container">
+    <h1>Wellcome to Presidential Elections! 🗳️</h1>
+
+    <p>
+      <a href="/register">Sign up</a> or 
+      <a href="/login">Login</a> to participate.
+    </p>
+  </div>
 </body>
 </html>
