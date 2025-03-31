@@ -72,10 +72,9 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/profile', ensureLoggedIn, async (req, res) => {
-  console.log('Accesăm /profile cu userId din sesiune:', req.session.userId);
   try {
     const result = await pool.query(
-      'SELECT name, email FROM users WHERE id = $1',
+      'SELECT name, email, description FROM users WHERE id = $1',
       [req.session.userId]
     );
     const user = result.rows[0];
@@ -83,6 +82,20 @@ router.get('/profile', ensureLoggedIn, async (req, res) => {
   } catch (err) {
     console.error('Error loading profile:', err);
     res.status(500).send('Internal error!');
+  }
+});
+
+router.post('/profile', ensureLoggedIn, async (req, res) => {
+  const { description } = req.body;
+  try {
+    await pool.query(
+      'UPDATE users SET description = $1 WHERE id = $2',
+      [description, req.session.userId]
+    );
+    res.redirect('/profile');
+  } catch (err) {
+    console.error('Error updating description:', err);
+    res.status(500).send('Internal error updating description.');
   }
 });
 

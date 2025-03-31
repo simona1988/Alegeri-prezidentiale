@@ -5,14 +5,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const app = express();
-
 const session = require('express-session');
+
 app.use(session({
   secret: 'it is a secret',
   resave: false,
   saveUninitialized: false
 }));
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
